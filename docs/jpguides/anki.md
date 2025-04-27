@@ -29,7 +29,7 @@ Log into your AnkiWeb Account on **Syncing** page.
 Set remaining tabs to whatever.
 
 ### Presets
-Default Preset for Japanese:
+Click on your deck's `settings knob → options` and setup the default preset for Japanese decks:
 
 * 10 new cards a day
 * All available reviews
@@ -75,8 +75,8 @@ Highly recommended to install listed below essential add-ons. Navigate to `Tools
 * [**FSRS Helper**](https://ankiweb.net/shared/info/759844606) (759844606): additional useful functionality for anki scheduler
 * [**Advanced Browser**](https://ankiweb.net/shared/info/874215009) (874215009): more features to anki browser
 
-### Setup Completed
-Now your Anki Setup should be completed, congratulations! :heart:
+### Finish
+Now your Anki Setup should be completed, congratulations! :star:
 
 As the next setup, you can go to [setting up Yomitan](/jpguides/yomitan/) for quick look ups and easy card creation.
 
