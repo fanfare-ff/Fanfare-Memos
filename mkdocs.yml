@@ -1,6 +1,6 @@
-site_name: Akari Records
+site_name: Fanfare Memos
 site_url: https://example.com
-site_author: Vladyslav Sorokin
+site_author: Fanfare
 nav:
   - Main Page: index.md
   - Japanese Guides:

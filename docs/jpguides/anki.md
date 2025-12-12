@@ -58,22 +58,211 @@ One of my favourite things about this note is that you can hover over kanji and 
 
 Highly recommended to install listed below essential add-ons. Navigate to `Tools→Add-ons`, push `Get Add-ons...`, and type the code according to addon page. Then some of these add-ons will have `Config` option or separate settings button in `Tools` tab which you can tweak up to your liking. I leave everything at default, except Review Heatmap.
 
-#### Essentiual add-ons
+#### Essential add-ons
 
 * [**AnkiConnect**](https://ankiweb.net/shared/info/2055492159) (2055492159): essential add-on to connect anki to external apps such as yomitan dictionaries
 * [**AJT Japanese for JP Mining Note**](https://ankiweb.net/shared/info/200813220) (200813220): furigana and pitch accent generator for jp-mining-note Note Type
-* [**VOICEVOX Japanese Text To Speech Audio Generator**](https://ankiweb.net/shared/info/366960193) (366960193): AI TTS generator
 * [**Review Heatmap**](https://ankiweb.net/shared/info/1771074083) (1771074083): review activity visualization GitHub style
-
-!!! note
-    I recommend to put heatmap `Tools→Review Heatmap Options...` in **Continuous Timeline** for better looks.
-    ![anki heatmap](../assets/images/anki_heatmap_settings2.png)
 
 #### Optional add-ons
 
+* [**VOICEVOX Japanese Text To Speech Audio Generator**](https://ankiweb.net/shared/info/366960193) (366960193): AI TTS generator
 * [**Kanji Grid Kuuube**](https://ankiweb.net/shared/info/1610304449) (1610304449): learnt kanji visualization
 * [**FSRS Helper**](https://ankiweb.net/shared/info/759844606) (759844606): additional useful functionality for anki scheduler
 * [**Advanced Browser**](https://ankiweb.net/shared/info/874215009) (874215009): more features to anki browser
+
+#### Settings
+Navigato to `Tools→Add-ons→Config` to edit add-on's json config or go to respective gui context menu, usually located in `Tools` tab.
+
+##### AnkiConnect
+Add links for asbplayer and ttsu e-book reader by modifying the json like this:
+
+```json
+{
+    "apiKey": null,
+    "apiLogPath": null,
+    "ignoreOriginList": [],
+    "webBindAddress": "127.0.0.1",
+    "webBindPort": 8765,
+    "webCorsOriginList": [
+        "http://localhost",
+        "https://killergerbah.github.io",
+        "https://reader.ttsu.app"
+    ]
+}
+```
+
+##### AJT Japanese
+
+TODO: add copy button to the code and make scrolling a bit nicer
+
+These are the settings that I use to generate furigana for sentences and words and pitch accents for JP Mining Note:
+
+```json
+{
+    "audio_settings": {
+        "attempts": 4,
+        "audio_download_timeout": 6,
+        "dictionary_download_timeout": 30,
+        "ignore_inflections": false,
+        "maximum_results": 99,
+        "search_dialog_field_name": "VocabAudio",
+        "stop_if_one_source_has_results": false,
+        "tag_separator": "<br>"
+    },
+    "audio_sources": [
+        {
+            "enabled": false,
+            "name": "NHK-2016",
+            "url": "https://github.com/Ajatt-Tools/nhk_2016_pronunciations_index/releases/download/v1.3/NHK-2016_main.zip"
+        },
+        {
+            "enabled": false,
+            "name": "NHK-1998",
+            "url": "https://github.com/Ajatt-Tools/nhk_1998_pronunciations_index/releases/download/v1.2/NHK-1998_main.zip"
+        },
+        {
+            "enabled": false,
+            "name": "Shinmeikai-8",
+            "url": "https://github.com/Ajatt-Tools/shinmeikai_8_pronunciations_index/releases/download/v1.5/Shinmeikai-8_main.zip"
+        },
+        {
+            "enabled": false,
+            "name": "Daijisen",
+            "url": "https://github.com/Ajatt-Tools/daijisen_pronunciations_index/releases/download/v1.0/Daijisen_main.zip"
+        },
+        {
+            "enabled": false,
+            "name": "TAAS",
+            "url": "https://github.com/Ajatt-Tools/taas_pronunciations_index/releases/download/v1.0/TAAS_main.zip"
+        }
+    ],
+    "cache_lookups": 1024,
+    "context_menu": {
+        "browser_search": true,
+        "generate_furigana": true,
+        "literal_pronunciation": true,
+        "look_up_word": true,
+        "to_hiragana": true,
+        "to_katakana": true
+    },
+    "definitions": {
+        "behavior": "append",
+        "destination": "VocabDef",
+        "dict_name": "meikyou",
+        "remove_marks": true,
+        "search_type": "exact",
+        "source": "VocabKanji",
+        "timeout": 10
+    },
+    "furigana": {
+        "blocklisted_words": "人",
+        "discard_mode": "discard_extra",
+        "maximum_results": 1,
+        "mecab_only": "彼,猫,首,母,顔,木,頭,私,弟,空,体,行く",
+        "prefer_literal_pronunciation": false,
+        "reading_separator": ", ",
+        "skip_numbers": true
+    },
+    "last_file_save_location": "",
+    "pitch_accent": {
+        "blocklisted_words": "こと,へ,か,よ,ん,だ,び,の,や,ね,ば,て,と,た,が,に,な,は,も,ます,から,いる,たち,てる,う,ましょ,たい,する,です,ない",
+        "discard_mode": "discard_extra",
+        "kana_lookups": true,
+        "lookup_shortcut": "Ctrl+8",
+        "maximum_results": 100,
+        "output_hiragana": false,
+        "reading_separator": "・",
+        "skip_numbers": true,
+        "style": "none",
+        "word_separator": "、"
+    },
+    "profiles": [
+        {
+            "destination": "SentenceReading",
+            "mode": "furigana",
+            "name": "Add furigana for sentence",
+            "note_type": "JP Mining Note",
+            "overwrite_destination": false,
+            "source": "Sentence",
+            "split_morphemes": true,
+            "triggered_by": "focus_lost,toolbar_button,note_added,bulk_add"
+        },
+        {
+            "destination": "VocabFurigana",
+            "mode": "furigana",
+            "name": "Add furigana for word -- UNUSED BY jp-mining-note",
+            "note_type": "AJT_JAPANESE_IGNORE_PROFILE",
+            "overwrite_destination": false,
+            "source": "VocabKanji",
+            "split_morphemes": false,
+            "triggered_by": "focus_lost,toolbar_button,note_added,bulk_add"
+        },
+        {
+            "destination": "AJTWordPitch",
+            "mode": "pitch",
+            "name": "Add pitch accent for word",
+            "note_type": "JP Mining Note",
+            "output_format": "html",
+            "overwrite_destination": false,
+            "source": "Word",
+            "split_morphemes": false,
+            "triggered_by": "focus_lost,toolbar_button,note_added,bulk_add"
+        },
+        {
+            "destination": "VocabAudio",
+            "mode": "audio",
+            "name": "Add audio for word -- UNUSED BY jp-mining-note",
+            "note_type": "AJT_JAPANESE_IGNORE_PROFILE",
+            "overwrite_destination": false,
+            "source": "VocabKanji",
+            "split_morphemes": false,
+            "triggered_by": "focus_lost,toolbar_button,note_added,bulk_add"
+        }
+    ],
+    "toolbar": {
+        "add_definition_button": {
+            "enabled": false,
+            "shortcut": "",
+            "text": "意"
+        },
+        "audio_search_button": {
+            "enabled": false,
+            "shortcut": "",
+            "text": "検"
+        },
+        "clean_furigana_button": {
+            "enabled": false,
+            "shortcut": "",
+            "text": "削"
+        },
+        "furigana_button": {
+            "enabled": false,
+            "shortcut": "",
+            "text": "振"
+        },
+        "generate_all_button": {
+            "enabled": false,
+            "shortcut": "Alt+P",
+            "text": "入"
+        },
+        "hiragana_button": {
+            "enabled": false,
+            "shortcut": "",
+            "text": "平"
+        },
+        "regenerate_all_button": {
+            "enabled": false,
+            "shortcut": "Alt+;",
+            "text": "再"
+        }
+    }
+}
+```
+
+##### Review Heatmap
+I recommend to put heatmap `Tools→Review Heatmap Options...` in **Continuous Timeline** for better looks.
+![anki heatmap](../assets/images/anki_heatmap_settings2.png)
 
 ### Finish
 Now your Anki Setup should be completed, congratulations! :star:
