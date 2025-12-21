@@ -8,7 +8,7 @@
 Get the latest version from [Official Anki Download Page](https://apps.ankiweb.net/#downloads).
 
 ### Preferences
-Go to `Tools→Preferences` and set all settings as below. Configure **Answer Keys** to your liking.
+Go to `Tools→Preferences` and set all the settings as below. Configure **Answer Keys** to your liking.
 
 ![anki preferences](../assets/images/anki_preferences1.png)
 
